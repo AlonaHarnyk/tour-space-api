@@ -1,0 +1,467 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tour Space app",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "description": "This is a documentation of Tour Space api"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    },
+    {
+      "url": "https://example.com/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tours",
+      "description": "Operations about tours."
+    }
+  ],
+  "paths": {
+    "/tours": {
+      "get": {
+        "tags": [
+          "Tours"
+        ],
+        "summary": "Get all tours",
+        "operationId": "getTours",
+        "description": "Get all tours",
+        "responses": {
+          "200": {
+            "description": "Get all tours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "tours"
+                  ],
+                  "properties": {
+                    "tours": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tours/{id}": {
+      "get": {
+        "tags": [
+          "Tours"
+        ],
+        "summary": "Get tour by id",
+        "operationId": "getTour",
+        "description": "Get tour by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65ca67e7ae7f10c88b598384"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get tour by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "tour"
+                  ],
+                  "properties": {
+                    "tour": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/ask": {
+      "post": {
+        "tags": [
+          "Questions"
+        ],
+        "summary": "Ask question about tour",
+        "operationId": "askQquestion",
+        "description": "Ask question about tour",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tourName",
+                  "userName",
+                  "phoneNumber",
+                  "question"
+                ],
+                "properties": {
+                  "tourName": {
+                    "description": "Tour's name",
+                    "type": "string",
+                    "example": "Романтичний Санторіні: Магія білих дахів"
+                  },
+                  "userName": {
+                    "description": "User's name",
+                    "type": "string",
+                    "example": "Olha Ivanenko"
+                  },
+                  "phoneNumber": {
+                    "description": "User's phone number",
+                    "type": "string",
+                    "example": "+380684673527"
+                  },
+                  "question": {
+                    "description": "Question about tour",
+                    "type": "string",
+                    "example": "Чи є знижки для студентів?"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creates a question",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Question received"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/reviews": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get all reviews",
+        "operationId": "getReviews",
+        "description": "Get all reviews",
+        "responses": {
+          "200": {
+            "description": "Get all reviews",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "reviews"
+                  ],
+                  "properties": {
+                    "reviews": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Add review about tour",
+        "operationId": "addReview",
+        "description": "Add review about tour",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "userName",
+                  "tourCountry",
+                  "review",
+                  "rating"
+                ],
+                "properties": {
+                  "userName": {
+                    "description": "User's name",
+                    "type": "string",
+                    "example": "Olha Ivanenko"
+                  },
+                  "tourCountry": {
+                    "description": "Tour's country",
+                    "type": "string",
+                    "example": "Італія"
+                  },
+                  "review": {
+                    "description": "Review about tour",
+                    "type": "string",
+                    "example": "Це була чудова подорож, яку я рекомендуватису всім знайомим!"
+                  },
+                  "rating": {
+                    "description": "Tour rating",
+                    "type": "number",
+                    "example": 5
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Adds review about tour",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Review added"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/subscribe": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "Subscribe on news",
+        "operationId": "suscribe",
+        "description": "Subscribe on news",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "description": "User's email",
+                    "type": "string",
+                    "example": "test@ukr.net"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Subscribe on news",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Subscription successful"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          }
+        }
+      }
+    },
+    "/gallery": {
+      "get": {
+        "tags": [
+          "Gallery"
+        ],
+        "summary": "Get pictures",
+        "operationId": "getPictures",
+        "description": "Get pictures",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get pictures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "pictures",
+                    "totalPages",
+                    "hasPreviousPage",
+                    "hasNextPage",
+                    "page"
+                  ],
+                  "properties": {
+                    "pictires": {
+                      "type": "array"
+                    },
+                    "totalPages": {
+                      "type": "integer",
+                      "example": 5
+                    },
+                    "hasNextPage": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "hasPreviousPage": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "page": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "400": {
+        "description": "Bad request error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "message",
+                "status"
+              ],
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Bad request"
+                },
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not found error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "message",
+                "tatus"
+              ],
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Not found"
+                },
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                }
+              }
+            }
+          }
+        }
+      },
+      "409": {
+        "description": "Conflict error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "message",
+                "status"
+              ],
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Conflict"
+                },
+                "status": {
+                  "type": "integer",
+                  "example": 409
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

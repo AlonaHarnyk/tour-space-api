@@ -1,0 +1,34 @@
+tags:
+  - Subscriptions
+summary: Subscribe on news
+operationId: suscribe
+description: 'Subscribe on news'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+        properties:
+          email:
+            description: "User's email"
+            type: string
+            example: 'test@ukr.net'
+responses:
+  '201':
+    description: Subscribe on news
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              example: Subscription successful
+  '400':
+    $ref: '../../components/responses/400.yaml'
+  '409':
+    $ref: '../../components/responses/409.yaml'

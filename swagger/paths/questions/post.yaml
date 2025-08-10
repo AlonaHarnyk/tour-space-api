@@ -1,0 +1,47 @@
+tags:
+  - Questions
+summary: Ask question about tour
+operationId: askQquestion
+description: 'Ask question about tour'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - tourName
+          - userName
+          - phoneNumber
+          - question
+        properties:
+          tourName:
+            description: "Tour's name"
+            type: string
+            example: 'Романтичний Санторіні: Магія білих дахів'
+          userName:
+            description: "User's name"
+            type: string
+            example: 'Olha Ivanenko'
+          phoneNumber:
+            description: "User's phone number"
+            type: string
+            example: '+380684673527'
+          question:
+            description: "Question about tour"
+            type: string
+            example: 'Чи є знижки для студентів?'
+responses:
+  '201':
+    description: Creates a question
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              example: Question received
+  '400':
+    $ref: '../../components/responses/400.yaml'

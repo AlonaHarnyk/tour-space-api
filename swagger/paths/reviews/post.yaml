@@ -1,0 +1,47 @@
+tags:
+  - Reviews
+summary: Add review about tour
+operationId: addReview
+description: 'Add review about tour'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - userName
+          - tourCountry
+          - review
+          - rating
+        properties:
+          userName:
+            description: "User's name"
+            type: string
+            example: 'Olha Ivanenko'
+          tourCountry:
+            description: "Tour's country"
+            type: string
+            example: 'Італія'
+          review:
+            description: "Review about tour"
+            type: string
+            example: 'Це була чудова подорож, яку я рекомендуватису всім знайомим!'
+          rating:
+            description: "Tour rating"
+            type: number
+            example: 5         
+responses:
+  '201':
+    description: Adds review about tour
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              example: Review added
+  '400':
+    $ref: '../../components/responses/400.yaml'

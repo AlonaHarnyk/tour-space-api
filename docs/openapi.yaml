@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Tour Space app
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: This is a documentation of Tour Space api
+tags:
+  - name: Tours
+    description: Operations about tours.
+servers:
+  - url: http://localhost:8000
+  - url: https://example.com/api/v1
+paths:
+  /tours:
+    get:
+      $ref: ../swagger/paths/tours/get.yaml
+  /tours/{id}:
+    get:
+      $ref: ../swagger/paths/tours/getById.yaml
+  /ask:
+    post:
+      $ref: ../swagger/paths/questions/post.yaml
+  /reviews:
+    get:
+      $ref: ../swagger/paths/reviews/get.yaml
+    post:
+      $ref: ../swagger/paths/reviews/post.yaml
+  /subscribe:
+    post:
+      $ref: ../swagger/paths/subscriptions/post.yaml
+  /gallery:
+    get:
+      $ref: ../swagger/paths/gallery/get.yaml

@@ -1,0 +1,42 @@
+#/swagger/paths/students/get.yaml
+
+tags:
+  - Gallery
+summary: Get pictures
+operationId: getPictures
+description: 'Get pictures'
+parameters:
+  - in: query
+    name: page
+    schema:
+      type: integer
+    example: 1
+responses:
+  '200':
+    description: Get pictures
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - pictures
+            - totalPages
+            - hasPreviousPage
+            - hasNextPage
+            - page
+          properties:
+            pictires:
+              type: array
+            totalPages:
+              type: integer
+              example: 5
+            hasNextPage:
+              type: boolean
+              example: false
+            hasPreviousPage:
+              type: boolean
+              example: true
+            page:
+              type: integer
+              example: 1
+

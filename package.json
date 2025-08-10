@@ -1,0 +1,32 @@
+{
+  "name": "tour-space-api",
+  "version": "1.0.0",
+  "description": "Api for Tour Space project (javascript)",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "start": "node ./src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "npm run build-docs",
+    "build-docs": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json"
+  },
+  "author": "Alona Harnyk",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "@redocly/cli": "^2.0.2",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0",
+    "nodemon": "^3.1.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "joi": "^18.0.0",
+    "mongoose": "^8.4.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

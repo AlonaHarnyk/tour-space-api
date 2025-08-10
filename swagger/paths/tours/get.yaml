@@ -1,0 +1,17 @@
+tags:
+  - Tours
+summary: Get all tours
+operationId: getTours
+description: "Get all tours"
+responses:
+  "200":
+    description: "Get all tours"
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - tours
+          properties:
+            tours:
+              type: array

@@ -1,0 +1,15 @@
+description: Not found error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+        - tatus
+      properties:
+        message:
+          type: string
+          example: Not found
+        status:
+          type: integer
+          example: 404

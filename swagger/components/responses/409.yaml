@@ -1,0 +1,17 @@
+description: Conflict error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+        - status 
+      properties:
+        message:
+          type: string
+          example: Conflict
+        status:
+          type: integer
+          example: 409
+
+

@@ -1,0 +1,17 @@
+tags:
+  - Reviews
+summary: Get all reviews
+operationId: getReviews
+description: "Get all reviews"
+responses:
+  "200":
+    description: "Get all reviews"
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - reviews
+          properties:
+            reviews:
+              type: array

@@ -1,0 +1,28 @@
+tags:
+  - Tours
+summary: Get tour by id
+operationId: getTour
+description: "Get tour by id"
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: "65ca67e7ae7f10c88b598384"
+responses:
+  "200":
+    description: "Get tour by id"
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - tour
+          properties:
+            tour:
+              type: object  
+  '404':
+    $ref: '../../components/responses/404.yaml'
+  '400':
+    $ref: '../../components/responses/400.yaml'
