@@ -11,7 +11,7 @@ tags:
     description: Operations about tours.
 servers:
   - url: http://localhost:8000
-  - url: https://example.com/api/v1
+  - url: https://tour-space-api.onrender.com
 paths:
   /tours:
     get:
