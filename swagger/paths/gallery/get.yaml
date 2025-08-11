@@ -8,9 +8,10 @@ description: 'Get pictures'
 parameters:
   - in: query
     name: page
+    required: true
     schema:
       type: integer
-    example: 1
+      example: 1
 responses:
   '200':
     description: Get pictures
@@ -25,7 +26,7 @@ responses:
             - hasNextPage
             - page
           properties:
-            pictires:
+            pictures:
               type: array
             totalPages:
               type: integer

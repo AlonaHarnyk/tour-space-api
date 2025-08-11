@@ -11,6 +11,9 @@
   },
   "servers": [
     {
+      "url": "http://localhost:8000"
+    },
+    {
       "url": "https://tour-space-api.onrender.com"
     }
   ],
@@ -177,6 +180,30 @@
         "summary": "Get all reviews",
         "operationId": "getReviews",
         "description": "Get all reviews",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Get all reviews",
@@ -185,11 +212,26 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "reviews"
+                    "reviews",
+                    "totalPages",
+                    "page",
+                    "hasNextPage"
                   ],
                   "properties": {
                     "reviews": {
                       "type": "array"
+                    },
+                    "totalPages": {
+                      "type": "integer",
+                      "example": 5
+                    },
+                    "page": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "hasNextPage": {
+                      "type": "boolean",
+                      "example": false
                     }
                   }
                 }
@@ -336,10 +378,11 @@
           {
             "in": "query",
             "name": "page",
+            "required": true,
             "schema": {
-              "type": "integer"
-            },
-            "example": 1
+              "type": "integer",
+              "example": 1
+            }
           }
         ],
         "responses": {
@@ -357,7 +400,7 @@
                     "page"
                   ],
                   "properties": {
-                    "pictires": {
+                    "pictures": {
                       "type": "array"
                     },
                     "totalPages": {

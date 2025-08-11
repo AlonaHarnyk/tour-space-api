@@ -3,11 +3,13 @@ import { addReview, getReviews } from "../services/reviews.js";
 
 export const getReviewsCtrl = async (req, res) => {
   const sortOrder = req.query.sortOrder;
-  const reviews = await getReviews(
-    sortOrders.includes(sortOrder) ? sortOrder : "asc"
+  const page = isNaN(parseInt(req.query.page)) ? 1 : parseInt(req.query.page);
+  const reviewsData = await getReviews(
+    sortOrders.includes(sortOrder) ? sortOrder : "asc",
+    page
   );
 
-  res.json({ reviews });
+  res.json(reviewsData);
 };
 
 export const addReviewCtrl = async (req, res) => {
