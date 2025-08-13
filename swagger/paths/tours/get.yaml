@@ -15,3 +15,5 @@ responses:
           properties:
             tours:
               type: array
+              items:
+                $ref: '../../components/schemas/toursItem.yaml'

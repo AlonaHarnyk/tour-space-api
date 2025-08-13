@@ -21,8 +21,8 @@ responses:
             - tour
           properties:
             tour:
-              type: object  
-  '404':
-    $ref: '../../components/responses/404.yaml'
-  '400':
-    $ref: '../../components/responses/400.yaml'
+              $ref: '../../components/schemas/tourDetails.yaml'
+  "404":
+    $ref: "../../components/responses/404.yaml"
+  "400":
+    $ref: "../../components/responses/400.yaml"

@@ -1,0 +1,28 @@
+type: object
+required:
+  - _id
+  - name
+  - photo
+  - startPrice
+  - duration
+properties:
+  _id:
+    description: "Tour's id"
+    type: string
+    example: 65e4decdd286b30065d54af9
+  name:
+    description: "Tour's name"
+    type: integer
+    example: "Стежками Гімалаїв: Трекінг до табору Аннапурни"
+  photo:
+    description: "Link to the tour's photo"
+    type: string
+    example: "https://res.cloudinary.com/ds8a4lhxg/image/upload/v1754834522/tour_2_qvchod.png"
+  startPrice:
+    description: "Tour's start price"
+    type: number
+    example: 1250
+  duration:
+    description: "Tour's duration"
+    type: string
+    example: "12 днів"

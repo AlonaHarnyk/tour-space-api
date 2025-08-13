@@ -32,6 +32,8 @@ responses:
           properties:
             reviews:
               type: array
+              items:
+                $ref: "../../components/schemas/reviewsItem.yaml"
             totalPages:
               type: integer
               example: 5

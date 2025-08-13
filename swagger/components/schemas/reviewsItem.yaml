@@ -1,0 +1,28 @@
+type: object
+required:
+  - _id
+  - rating
+  - userName
+  - tourCountry
+  - review
+properties:
+  _id:
+    description: "Reviews's id"
+    type: string
+    example: 65e4decdd286b30065d54af9
+  rating:
+    description: "Tour's rating"
+    type: integer
+    example: 5
+  userName:
+    description: "User's name"
+    type: string
+    example: "Olha"
+  tourCountry:
+    description: "Tour's country"
+    type: string
+    example: Italy
+  review:
+    description: "Review about tour"
+    type: string
+    example: "Це була чудова подорож, яку я рекомендуватиму всім знайомим!"

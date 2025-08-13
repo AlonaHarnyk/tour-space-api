@@ -41,7 +41,10 @@
                   ],
                   "properties": {
                     "tours": {
-                      "type": "array"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/toursItem"
+                      }
                     }
                   }
                 }
@@ -82,7 +85,7 @@
                   ],
                   "properties": {
                     "tour": {
-                      "type": "object"
+                      "$ref": "#/components/schemas/tourDetails"
                     }
                   }
                 }
@@ -126,6 +129,8 @@
                   "userName": {
                     "description": "User's name",
                     "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
                     "example": "Olha Ivanenko"
                   },
                   "phoneNumber": {
@@ -136,6 +141,8 @@
                   "question": {
                     "description": "Question about tour",
                     "type": "string",
+                    "minLength": 10,
+                    "maxLength": 300,
                     "example": "Чи є знижки для студентів?"
                   }
                 }
@@ -216,7 +223,10 @@
                   ],
                   "properties": {
                     "reviews": {
-                      "type": "array"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/reviewsItem"
+                      }
                     },
                     "totalPages": {
                       "type": "integer",
@@ -259,21 +269,29 @@
                   "userName": {
                     "description": "User's name",
                     "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
                     "example": "Olha Ivanenko"
                   },
                   "tourCountry": {
                     "description": "Tour's country",
                     "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
                     "example": "Італія"
                   },
                   "review": {
                     "description": "Review about tour",
                     "type": "string",
+                    "minLength": 10,
+                    "maxLength": 300,
                     "example": "Це була чудова подорож, яку я рекомендуватису всім знайомим!"
                   },
                   "rating": {
                     "description": "Tour rating",
                     "type": "number",
+                    "minimum": 1,
+                    "maximum": 5,
                     "example": 5
                   }
                 }
@@ -398,7 +416,10 @@
                   ],
                   "properties": {
                     "pictures": {
-                      "type": "array"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/galleryItem"
+                      }
                     },
                     "totalPages": {
                       "type": "integer",
@@ -426,6 +447,150 @@
     }
   },
   "components": {
+    "schemas": {
+      "toursItem": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "photo",
+          "startPrice",
+          "duration"
+        ],
+        "properties": {
+          "_id": {
+            "description": "Tour's id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "name": {
+            "description": "Tour's name",
+            "type": "integer",
+            "example": "Стежками Гімалаїв: Трекінг до табору Аннапурни"
+          },
+          "photo": {
+            "description": "Link to the tour's photo",
+            "type": "string",
+            "example": "https://res.cloudinary.com/ds8a4lhxg/image/upload/v1754834522/tour_2_qvchod.png"
+          },
+          "startPrice": {
+            "description": "Tour's start price",
+            "type": "number",
+            "example": 1250
+          },
+          "duration": {
+            "description": "Tour's duration",
+            "type": "string",
+            "example": "12 днів"
+          }
+        }
+      },
+      "tourDetails": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "photo",
+          "startPrice",
+          "duration",
+          "description"
+        ],
+        "properties": {
+          "_id": {
+            "description": "Tour's id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "name": {
+            "description": "Tour's name",
+            "type": "integer",
+            "example": "Стежками Гімалаїв: Трекінг до табору Аннапурни"
+          },
+          "photo": {
+            "description": "Link to the tour's photo",
+            "type": "string",
+            "example": "https://res.cloudinary.com/ds8a4lhxg/image/upload/v1754834522/tour_2_qvchod.png"
+          },
+          "startPrice": {
+            "description": "Tour's start price",
+            "type": "number",
+            "example": 1250
+          },
+          "duration": {
+            "description": "Tour's duration",
+            "type": "string",
+            "example": "12 днів"
+          },
+          "description": {
+            "description": "Tour's description",
+            "type": "string",
+            "example": "Уявіть, як ви крокуєте високо над гірською ущелиною, відчуваючи під ногами легке погойдування підвісного мосту. Перед вами – величні, засніжені вершини Гімалаїв, що сяють на тлі безхмарного неба. Повітря тут кришталево чисте, насичене ароматом гірських трав і свободою. Це не просто подорож — це виклик, пригода та мить, коли серце б’ється в ритмі гір."
+          }
+        }
+      },
+      "reviewsItem": {
+        "type": "object",
+        "required": [
+          "_id",
+          "rating",
+          "userName",
+          "tourCountry",
+          "review"
+        ],
+        "properties": {
+          "_id": {
+            "description": "Reviews's id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "rating": {
+            "description": "Tour's rating",
+            "type": "integer",
+            "example": 5
+          },
+          "userName": {
+            "description": "User's name",
+            "type": "string",
+            "example": "Olha"
+          },
+          "tourCountry": {
+            "description": "Tour's country",
+            "type": "string",
+            "example": "Italy"
+          },
+          "review": {
+            "description": "Review about tour",
+            "type": "string",
+            "example": "Це була чудова подорож, яку я рекомендуватиму всім знайомим!"
+          }
+        }
+      },
+      "galleryItem": {
+        "type": "object",
+        "required": [
+          "_id",
+          "photo",
+          "description"
+        ],
+        "properties": {
+          "_id": {
+            "description": "Picture's id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "photo": {
+            "description": "Link to the picture",
+            "type": "string",
+            "example": "https://res.cloudinary.com/ds8a4lhxg/image/upload/v1754834224/gallery_5_gue44f.png"
+          },
+          "description": {
+            "description": "Information about location",
+            "type": "string",
+            "example": "Oia, Santorini"
+          }
+        }
+      }
+    },
     "responses": {
       "400": {
         "description": "Bad request error",

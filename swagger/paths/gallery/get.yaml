@@ -1,5 +1,3 @@
-#/swagger/paths/students/get.yaml
-
 tags:
   - Gallery
 summary: Get pictures
@@ -28,6 +26,8 @@ responses:
           properties:
             pictures:
               type: array
+              items:
+                $ref: "../../components/schemas/galleryItem.yaml"
             totalPages:
               type: integer
               example: 5

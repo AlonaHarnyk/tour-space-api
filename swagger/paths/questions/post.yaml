@@ -21,6 +21,8 @@ requestBody:
           userName:
             description: "User's name"
             type: string
+            minLength: 1
+            maxLength: 100
             example: 'Olha Ivanenko'
           phoneNumber:
             description: "User's phone number"
@@ -29,6 +31,8 @@ requestBody:
           question:
             description: "Question about tour"
             type: string
+            minLength: 10
+            maxLength: 300
             example: 'Чи є знижки для студентів?'
 responses:
   '201':

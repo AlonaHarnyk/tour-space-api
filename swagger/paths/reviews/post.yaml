@@ -17,18 +17,26 @@ requestBody:
           userName:
             description: "User's name"
             type: string
+            minLength: 1
+            maxLength: 100
             example: 'Olha Ivanenko'
           tourCountry:
             description: "Tour's country"
             type: string
+            minLength: 1
+            maxLength: 100
             example: 'Італія'
           review:
             description: "Review about tour"
             type: string
+            minLength: 10
+            maxLength: 300
             example: 'Це була чудова подорож, яку я рекомендуватису всім знайомим!'
           rating:
             description: "Tour rating"
             type: number
+            minimum: 1
+            maximum: 5
             example: 5         
 responses:
   '201':
